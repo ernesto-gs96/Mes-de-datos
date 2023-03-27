@@ -1,0 +1,1 @@
+print("""We only see about 60% of the Moon's surface, this is known as the "near side".""")
