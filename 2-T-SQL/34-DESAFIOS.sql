@@ -27,4 +27,20 @@ ON p.ProductID = od.ProductIDGROUP BY p.Name
 ORDER BY TotalRevenue DESC;
 
 -- DESAFIO 2.2
-SELECT p.Name , SUM(od.LineTotal) AS LineTotalFROM SalesLT.Product AS pJOIN SalesLT.SalesOrderDetail AS od    ON p.ProductID = od.ProductIDWHERE p.ListPrice > 1000GROUP BY p.ProductID, p.NameORDER BY LineTotal DESC;-- DESAFIO 2.3SELECT p.Name , SUM(od.LineTotal) AS LineTotalFROM SalesLT.Product AS pJOIN SalesLT.SalesOrderDetail AS od    ON p.ProductID = od.ProductIDWHERE p.ListPrice > 1000GROUP BY p.ProductID, p.NameHAVING SUM(od.LineTotal) > 20000ORDER BY LineTotal DESC;
+SELECT p.Name , SUM(od.LineTotal) AS LineTotal
+FROM SalesLT.Product AS p
+JOIN SalesLT.SalesOrderDetail AS od    
+    ON p.ProductID = od.ProductID
+WHERE p.ListPrice > 1000
+GROUP BY p.ProductID, p.Name
+ORDER BY LineTotal DESC;
+
+-- DESAFIO 2.3
+SELECT p.Name , SUM(od.LineTotal) AS LineTotal
+FROM SalesLT.Product AS p
+JOIN SalesLT.SalesOrderDetail AS od    
+    ON p.ProductID = od.ProductID
+WHERE p.ListPrice > 1000
+GROUP BY p.ProductID, p.Name
+HAVING SUM(od.LineTotal) > 20000
+ORDER BY LineTotal DESC;
